@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mysql
-        image: samuelrak/travel:t-db1
+        image:  mysql:8.0
         ports:
         - containerPort: 3306
         env:
