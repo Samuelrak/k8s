@@ -1,0 +1,20 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-tours
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-tours
+  template:
+    metadata:
+      labels:
+        app: backend-tours
+    spec:
+      containers:
+      - name: backend-tours
+        image: samuelrak/travel:t-be-tours9
+        ports:
+        - containerPort: 5001

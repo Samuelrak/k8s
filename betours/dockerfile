@@ -1,0 +1,19 @@
+FROM python:3.11
+
+ENV MYSQL_HOST=mysql-service
+ENV MYSQL_USER=root
+ENV MYSQL_PASSWORD=
+ENV MYSQL_DATABASE=traveltours
+ENV SECRET_KEY=your_secret_key
+
+WORKDIR /app
+
+COPY . .
+
+RUN pip install -r requirements.txt
+
+RUN pip install pyjwt
+
+EXPOSE 5001
+
+CMD ["python", "server.py"]

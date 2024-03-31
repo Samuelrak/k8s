@@ -17,13 +17,6 @@ spec:
                 name: frontend-service
                 port:
                   number: 4200
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontendv2-service
-                port:
-                  number: 4200
           - path: /login
             pathType: Prefix
             backend:
@@ -41,28 +34,35 @@ spec:
           - path: /view
             pathType: Prefix
             backend:
-                service:
-                  name: backend-tours-service
-                  port:
-                    number: 5000
+              service:
+                name: backend-tours-service
+                port:
+                  number: 5000
           - path: /add
             pathType: Prefix
             backend:
-                service:
-                  name: backend-tours-service
-                  port:
-                    number: 5000
+              service:
+                name: backend-tours-service
+                port:
+                  number: 5000
           - path: /delete
             pathType: Prefix
             backend:
-                service:
-                  name: backend-tours-service
-                  port:
-                    number: 5000
+              service:
+                name: backend-tours-service
+                port:
+                  number: 5000
           - path: /put
             pathType: Prefix
             backend:
-                service:
-                  name: backend-tours-service
-                  port:
-                    number: 5000
+              service:
+                name: backend-tours-service
+                port:
+                  number: 5000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontendv2-service
+                port:
+                  number: 4200

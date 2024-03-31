@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: backend-auth
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: backend
+      app: backend-auth
   template:
     metadata:
       labels:
-        app: backend
+        app: backend-auth
     spec:
       containers:
-      - name: backend
-        image: samuelrak/travel:t-be2
+      - name: backend-auth
+        image: samuelrak/travel:t-be-auth8
         ports:
         - containerPort: 5000

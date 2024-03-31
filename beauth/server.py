@@ -2,6 +2,7 @@ import base64
 import time
 import uuid
 import jwt
+import os
 
 import mysql.connector
 from flask import Flask, jsonify, request
@@ -11,11 +12,13 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
+port = int(os.environ.get('PORT', 5000))
+
 db_config = {
-  'host': 'mysql-service',
-  'user': 'root',
-  'password': '',
-  'database': 'traveltours',
+  'host': os.environ.get('DB_HOST', 'mysql-service'),
+  'user': os.environ.get('DB_USER', 'root'),
+  'password': os.environ.get('DB_PASSWORD', ''),
+  'database': os.environ.get('DB_DATABASE', 'traveltours'),
 }
 
 db = None
@@ -25,7 +28,7 @@ while db is None:
   try:
     db = mysql.connector.connect(**db_config)
     cursor = db.cursor(dictionary=True)
-    print("1Database connection successful!")
+    print("Database connection successful!")
   except mysql.connector.Error as err:
     print("Error connecting to the database: {}".format(err))
     print("Retrying database connection in 5 seconds...")
@@ -34,7 +37,7 @@ while db is None:
 active_sessions = {}
 secret_key = 'your_secret_key'
 
-@app.route('/login', methods=['POST'])
+@app.route('/api/user/login', methods=['POST'])
 def user_login():
   data = request.get_json()
 
@@ -65,7 +68,7 @@ def user_login():
   except Exception as e:
     return jsonify({'success': False, 'error': 'An error occurred while processing your request'}), 500
 
-@app.route('/logout', methods=['POST'])
+@app.route('/api/user/logout', methods=['POST'])
 def logout():
   data = request.get_json()
   username = data.get('username')
@@ -82,4 +85,4 @@ def logout():
     return jsonify({'success': False, 'error': 'An error occurred while processing your request'}), 500
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', debug=True)
+  app.run(host='0.0.0.0', debug=True, port=port)
