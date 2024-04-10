@@ -1,0 +1,5 @@
+resources:
+  - backend-auth-deployment.yaml
+  - backend-auth-service.yaml
+  - backend-tours-deployment.yaml
+  - backend-tours-service.yaml

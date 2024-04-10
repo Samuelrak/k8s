@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: frontend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: frontend
@@ -16,10 +16,9 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: samuelrak/travel:t-fe31
+        image: samuelrak/travel:t-feX
         ports:
-        - containerPort: 4200
-        env:
-          - name: API_URL_AUTH
-            value: http://mytravel-123.com/login
-
+        - containerPort: 80
+#        env:
+#          - name: API_URL_AUTH
+#            value: http://mytravel-123.com/login

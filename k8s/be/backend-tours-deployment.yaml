@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,5 +15,8 @@ spec:
       containers:
       - name: backend-tours
         image: samuelrak/travel:t-be-tours9
+        envFrom:
+         - configMapRef:
+             name: mysql-config
         ports:
         - containerPort: 5001

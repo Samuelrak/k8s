@@ -1,14 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+namespace: travel
 resources:
-  - backend-auth-deployment.yaml
-  - backend-auth-service.yaml
-  - backend-tours-deployment.yaml
-  - backend-tours-service.yaml
-  - frontend-deployment.yaml
-  - frontend-service.yaml
-  - frontendv2-deployment.yaml
-  - mysql-deployment.yaml
-  - mysql-service.yaml
+  - db
+  - fe
+  - be
   - web2-ingress.yaml
-  - web-be-ing.yaml
+
+

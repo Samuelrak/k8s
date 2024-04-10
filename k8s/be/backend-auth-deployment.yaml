@@ -15,5 +15,8 @@ spec:
       containers:
       - name: backend-auth
         image: samuelrak/travel:t-be-auth8
+        envFrom:
+         - configMapRef:
+             name: mysql-config
         ports:
         - containerPort: 5000

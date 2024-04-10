@@ -3,12 +3,6 @@ kind: Ingress
 metadata:
   name: webpage-ingress-be
   annotations:
-    nginx.ingress.kubernetes.io/affinity: cookie
-    nginx.ingress.kubernetes.io/affinity-mode: persistent
-  #  nginx.ingress.kubernetes.io/affinity: cookie
-  #  nginx.ingress.kubernetes.io/affinity-mode: balanced
-  #  nginx.ingress.kubernetes.io/session-cookie-name: route
-  #  nginx.ingress.kubernetes.io/session-cookie-expires: 30s
 spec:
   ingressClassName: nginx
   rules:
