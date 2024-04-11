@@ -14,8 +14,8 @@ spec:
     spec:
       volumes:
         - name: init-volume
-                   
-
+          configMap:
+            name: init-db
       containers:
         - name: mysql
           image: mariadb:latest
@@ -25,6 +25,6 @@ spec:
             - configMapRef:
                 name: mysql-config
           volumeMounts:
-            - name: ínit-volume
+            - name: init-volume
               mountPath: /docker-entrypoint-initdb.d/
               readOnly: true
