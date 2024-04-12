@@ -29,10 +29,10 @@ spec:
             - "-c"
             - |
               set -ex
-              # Ensure the change_master_to.sql.in file exists
-              if [[ -f /mnt/config-map/change_master_to.sql.in ]]; then
-                cp /mnt/config-map/change_master_to.sql.in /docker-entrypoint-initdb.d/
-              fi
+#              # Ensure the change_master_to.sql.in file exists
+#              if [[ -f /mnt/config-map/change_master_to.sql.in ]]; then
+#                cp /mnt/config-map/change_master_to.sql.in /docker-entrypoint-initdb.d/
+#              fi
           volumeMounts:
             - name: config-map
               mountPath: /mnt/config-map

@@ -4,6 +4,6 @@ metadata:
   name: mysql-config
 data:
   MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: "true"
-  MARIADB_HOST: "mysql-service"
+#  MARIADB_HOST: "mysql-service"
   MARIADB_USER: "root"
   MARIADB_ROOT_PASSWORD: ""
