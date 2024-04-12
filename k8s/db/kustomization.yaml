@@ -8,9 +8,8 @@ configMapGenerator:
 - name: mysql-config
   literals:
   - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
-  - MARIADB_HOST=mysql-service
   - MARIADB_USER=root
-
+#add here headless service 
 - name: init-db
   files:
     - traveltours.sql
