@@ -29,10 +29,10 @@ spec:
             - "-c"
             - |
               set -ex
-#              # Ensure the change_master_to.sql.in file exists
-#              if [[ -f /mnt/config-map/change_master_to.sql.in ]]; then
-#                cp /mnt/config-map/change_master_to.sql.in /docker-entrypoint-initdb.d/
-#              fi
+              # Ensure the change_master_to.sql.in file exists
+              if [[ -f /mnt/config-map/change_master_to.sql.in ]]; then
+                cp /mnt/config-map/change_master_to.sql.in /docker-entrypoint-initdb.d/
+              fi
           volumeMounts:
             - name: config-map
               mountPath: /mnt/config-map
@@ -44,7 +44,7 @@ spec:
               value: "1"
           ports:
             - name: mysql
-              containerPort: 3306
+              containerPort: 3308
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
@@ -72,7 +72,7 @@ spec:
           image: gcr.io/google-samples/xtrabackup:1.0
           ports:
             - name: xtrabackup
-              containerPort: 3307
+              containerPort: 3309
           command:
             - bash
             - "-c"
@@ -103,7 +103,7 @@ spec:
                 echo "Initializing replication from clone position"
                 mysql -h 127.0.0.1 \
                       -e "$(<change_master_to.sql.in), \
-                              MASTER_HOST='mysql-headless.travel.svc.cluster.local', \
+                              MASTER_HOST='mysql-headless-0.mysql-headless.default.svc.cluster.local', \
                               MASTER_USER='root', \
                               MASTER_PASSWORD='', \
                               MASTER_CONNECT_RETRY=10; \
@@ -113,7 +113,7 @@ spec:
               fi
 
               # Start a server to send backups when requested by peers.
-              exec ncat --listen --keep-open --send-only --max-conns=1 3306 -c \
+              exec ncat --listen --keep-open --send-only --max-conns=1 3308 -c \
                 "xtrabackup --backup --slave-info --stream=xbstream --host=127.0.0.1 --user=root"
           volumeMounts:
             - name: data
@@ -132,4 +132,4 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 10Gi
+            storage: 1Gi
