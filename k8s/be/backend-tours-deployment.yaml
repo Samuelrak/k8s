@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-tours
-        image: samuelrak/travel:t-be-tours9
+        image: samuelrak/travel:t-be-tours10
         envFrom:
          - configMapRef:
              name: mysql-config

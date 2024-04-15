@@ -19,6 +19,6 @@ spec:
         image: samuelrak/travel:t-feX
         ports:
         - containerPort: 80
-#        env:
-#          - name: API_URL_AUTH
-#            value: http://mytravel-123.com/login
+        env:
+          - name: API_URL_AUTH
+            value: http://mytravel-123.com/login

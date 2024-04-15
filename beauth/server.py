@@ -15,7 +15,7 @@ CORS(app)
 port = int(os.environ.get('PORT', 5000))
 
 db_config = {
-  'host': os.environ.get('DB_HOST', 'mysql-service'),
+  'host': os.environ.get('DB_HOST', 'mysql-headless'),
   'user': os.environ.get('DB_USER', 'root'),
   'password': os.environ.get('DB_PASSWORD', ''),
   'database': os.environ.get('DB_DATABASE', 'traveltours'),
