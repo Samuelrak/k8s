@@ -1,0 +1,3 @@
+resources:
+- nginx-service.yaml
+- nginx-configmap.yaml

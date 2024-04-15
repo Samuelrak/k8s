@@ -2,7 +2,7 @@ resources:
 - mysql-service.yaml
 - mysql-statefulset.yaml
 #- mysql-config.yaml
-- mysql-deployment.yaml
+#- mysql-deployment.yaml
 configMapGenerator:
 - name: mysql-config
   files:
@@ -11,7 +11,7 @@ configMapGenerator:
   - MARIADB_ALLOW_EMPTY_ROOT_PASSWORD=true
   - MARIADB_USER=root
 #  - HOSTNAME=mysql-service.travel.svc.cluster.local
-  - HOSTNAME=mysql-service
+  - HOSTNAME=mysql-headless
 
 - name: init-db
   files:

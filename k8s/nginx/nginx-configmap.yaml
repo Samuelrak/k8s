@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+data:
+  environment.ts: |
+    window['environmentauth'] = {
+      production: false,
+      apiUrl: 'http://backend-auth-service:5000'
+    };
+    window['environmenttours'] = {
+      production: false,
+      apiUrl: 'http://backend-tours-service:5001'
+    };
+  environment.prod.ts: |
+    window['environmentauth'] = {
+      production: true,
+      apiUrl: 'http://backend-auth-service:5000'
+    };
+    window['environmenttours'] = {
+      production: true,
+      apiUrl: 'http://backend-tours-service:5001'
+    };

@@ -7,5 +7,5 @@ resources:
   - fe
   - be
   - web2-ingress.yaml
-
+  - nginx
 

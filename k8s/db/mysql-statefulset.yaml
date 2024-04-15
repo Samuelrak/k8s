@@ -21,6 +21,9 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: data-mysql-0
+        - name: init-script
+          configMap:
+            name: init-db
       initContainers:
         - name: init-mysql
           image: mysql:5.7
