@@ -32,13 +32,12 @@ spec:
             - "-c"
             - |
               set -ex
-              # Ensure the change_master_to.sql.in file exists
-              if [[ -f /mnt/config-map/change_master_to.sql.in ]]; then
-                cp /mnt/config-map/change_master_to.sql.in /docker-entrypoint-initdb.d/
-              fi
+              cp /mnt/init-script/traveltours.sql /mnt/data
           volumeMounts:
-            - name: config-map
-              mountPath: /mnt/config-map
+            - name: init-script
+              mountPath: /mnt/init-script
+            - name: data
+              mountPath: /mnt/data
       containers:
         - name: mysql
           image: mysql:5.7
@@ -54,6 +53,9 @@ spec:
               subPath: mysql
             - name: config-map
               mountPath: /etc/mysql/conf.d
+            - name: init-volume
+              mountPath: /docker-entrypoint-initdb.d
+              readOnly: true
           resources:
             requests:
               cpu: 500m

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend-auth
-        image: samuelrak/travel:t-be-auth9
+        image: samuelrak/travel:t-be-auth10
         envFrom:
          - configMapRef:
              name: mysql-config

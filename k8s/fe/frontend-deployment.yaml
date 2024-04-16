@@ -16,6 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
+#        image: samuelrak/travel:t-feX
         image: samuelrak/travel:fex2
         ports:
         - containerPort: 80
