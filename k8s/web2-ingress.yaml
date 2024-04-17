@@ -1,12 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: webpage-ingress
+  name: mytravel-ingress
+  namespace: travel
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    spec.ingressClassName: traefik
 spec:
   rules:
-    - host: mytravel-123.com
+    - host: mytravel123.eu
       http:
         paths:
           - path: /
@@ -16,14 +17,14 @@ spec:
                 name: frontend-service
                 port:
                   number: 4200
-          - path: /api/user
+          - path: /api/auth
             pathType: Prefix
             backend:
               service:
                 name: backend-auth-service
                 port:
                   number: 5000
-          - path: /api/tours1
+          - path: /api/tours/
             pathType: Prefix
             backend:
               service:

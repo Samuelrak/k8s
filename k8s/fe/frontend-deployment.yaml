@@ -16,17 +16,17 @@ spec:
     spec:
       containers:
       - name: frontend
-#        image: samuelrak/travel:t-feX
-        image: samuelrak/travel:fex2
+        image: samuelrak/travel:t-feX
+#        image: samuelrak/travel:t-fe20
         ports:
         - containerPort: 80
-        volumeMounts:
-        - name: config-volume
-          mountPath: /app/src/environments
+#        volumeMounts:
+#        - name: config-volume
+#          mountPath: /app/src/environments
         env:
           - name: API_URL_AUTH
             value: http://mytravel-123.com/login
-      volumes:
-      - name: config-volume
-        configMap:
-          name: frontend-config
+#      volumes:
+#      - name: config-volume
+#        configMap:
+#          name: frontend-config
